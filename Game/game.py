@@ -22,7 +22,7 @@ dis_height = 600
 dis = pygame.display.set_mode((dis_width, dis_height))
 
 # Title
-pygame.display.set_caption('Worm by Idalis')
+pygame.display.set_caption('Candy Worm by Idalis')
 
 #Start menu
 mouse = pygame.mouse.get_pos() 
