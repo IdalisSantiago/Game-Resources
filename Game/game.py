@@ -24,13 +24,13 @@ dis = pygame.display.set_mode((dis_width, dis_height))
 # Title
 pygame.display.set_caption('Candy Worm by Idalis')
 
-#Start menu
-mouse = pygame.mouse.get_pos() 
+# #Start menu
+# mouse = pygame.mouse.get_pos() 
  
 # keeps the display going
 clock = pygame.time.Clock()
  
-# Snake block sizes/food size/snake speed
+# worm block sizes/food size/worm speed
 worm_block = 10
 fps = 15
 
