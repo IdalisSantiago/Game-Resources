@@ -31,8 +31,8 @@ mouse = pygame.mouse.get_pos()
 clock = pygame.time.Clock()
  
 # Snake block sizes/food size/snake speed
-worm_block = 20
-worm_speed = 8
+worm_block = 10
+fps = 15
 
  
 # Fonts
@@ -44,9 +44,6 @@ score_font = pygame.font.SysFont("comicsansms", 35)
 bg = pygame.image.load("background.png")
 bg = pygame.transform.scale(bg,(dis_width,dis_height))
 
-# c = pygame.image.load("candy.png")
-
-#defining start menu 
 
 #The score
 def Your_score(score):
@@ -58,7 +55,7 @@ def Your_score(score):
 def the_worm(worm_block, worm_List):
     for x in worm_List:
         body = pygame.image.load("body.png")
-        body = pygame.transform.scale(body,(worm_block, worm_block))
+        body = pygame.transform.scale(body,(worm_block *3.5, worm_block *3.5)) 
         dis.blit(body, (x[0],x[1]))
         # pygame.draw.rect(dis, red, [x[0], x[1], worm_block, worm_block])
  
@@ -87,8 +84,8 @@ def gameLoop():
     Length_of_worm = 1
  
  #Randomizing the food
-    foodx = random.randrange(0, dis_width - worm_block, 20)
-    foody = random.randrange(0, dis_height - worm_block, 20)
+    foodx = round(random.randrange(0, dis_width - worm_block) / 10.0) * 10.0
+    foody = round(random.randrange(0, dis_height - worm_block) / 10.0) * 10.0
  
  #Begining of the while loop
     while not game_over:
@@ -135,7 +132,7 @@ def gameLoop():
         dis.blit(bg,(0,0))
 #food square
         candy = pygame.image.load("candy.png")
-        candy = pygame.transform.scale(candy,(worm_block, worm_block))
+        candy = pygame.transform.scale(candy,(worm_block *4, worm_block *4))
         dis.blit(candy, (foodx,foody))
         # rect = pygame.draw.rect(dis, yellow, [foodx, foody, worm_block, worm_block])
 
@@ -158,15 +155,13 @@ def gameLoop():
  
  #collecting food allows worm to grow by one block
         if x1 == foodx and y1 == foody:
-            foodx = random.randrange(0, dis_width - worm_block, 20)
-            foody = random.randrange(0, dis_height - worm_block, 20)
+            foodx = round(random.randrange(0, dis_width - worm_block) / 10.0) * 10.0
+            foody = round(random.randrange(0, dis_height - worm_block) / 10.0) * 10.0
             Length_of_worm += 1
  
-        clock.tick(worm_block)
-        
+        clock.tick(fps)
  
     pygame.quit()
     quit()
- 
  
 gameLoop()
